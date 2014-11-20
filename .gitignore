@@ -24,3 +24,9 @@ proguard/
 
 # Log Files
 *.log
+
+# jar-files
+*.jar
+
+# Mac 
+.DS_Store
