@@ -13,9 +13,9 @@
         android:layout_height="fill_parent"
         android:id="@+id/imageView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
         android:src="@android:drawable/sym_def_app_icon"
-        android:layout_alignParentTop="false" />
+        android:layout_alignParentTop="false"
+        android:contentDescription=""/>
 
 
     <TextView
@@ -27,8 +27,7 @@
         android:onClick="onLoginSignUpSwitcherClicked"
         android:clickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentLeft="true" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -37,7 +36,6 @@
         android:id="@+id/linearLayout"
         android:layout_below="@+id/loginSignUpAction"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="150dp">
 
 
@@ -98,8 +96,7 @@
         android:onClick="onLoginSignUpActionClicked"
         android:clickable="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>

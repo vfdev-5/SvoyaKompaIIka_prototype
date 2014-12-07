@@ -33,7 +33,6 @@ public class LoginSignUpActivity extends Activity {
     private String [] mSwitcherOptions;
     private String [] mActionOptions;
 
-    /// ??? RECODE : This should be done using mActionOptions, mSwitcherOptions
     private static final int SWITCHER_OPTION_SIGN_UP = 0;
     private static final int SWITCHER_OPTION_LOG_IN = 1;
 
@@ -42,7 +41,6 @@ public class LoginSignUpActivity extends Activity {
     private static final int ACTION_OPTION_SEND = 2;
     private int mState = -1;
 
-    /// !!! RECODE
 
 
     @Override
@@ -58,31 +56,11 @@ public class LoginSignUpActivity extends Activity {
         mForgotPasswordAction = (TextView) findViewById(R.id.forgotPasswordAction);
 
         mSwitcherOptions = getResources().getStringArray(R.array.LoginSignUpSwitch);
-        mActionOptions = getResources().getStringArray(R.array.LoginSignUpAction);
+        mActionOptions = getResources().getStringArray(R.array.LoginSignUpActions);
 
         // Login activity is initialized by default
         setupLoginActivity();
 
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.login_sign_up, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -200,6 +178,8 @@ public class LoginSignUpActivity extends Activity {
                     if (e != null) {
                         // Show the error message
                         Toast.makeText(getApplicationContext(),
+                                getString(R.string.ErrorMsg)
+                                +
                                 e.getMessage(),
                                 Toast.LENGTH_LONG
                         ).show();
@@ -223,6 +203,8 @@ public class LoginSignUpActivity extends Activity {
                     if (e != null) {
                         // Show the error message
                         Toast.makeText(getApplicationContext(),
+                                getString(R.string.ErrorMsg)
+                                +
                                 e.getMessage(),
                                 Toast.LENGTH_LONG
                         ).show();

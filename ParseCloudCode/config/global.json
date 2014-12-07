@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "svoyaKompaIIka"
+        }, 
+        "svoyaKompaIIka": {
+            "applicationId": "4J11ugOL7oZ77dIRvOGICs34bnmv00Z9LEM1L2WN", 
+            "masterKey": "AleWe528tKMkzDMJjQGtdrqCmWDgXIQvgrpgbdNH"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.2"
+    }
+}

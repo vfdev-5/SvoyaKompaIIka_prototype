@@ -2,39 +2,54 @@
 <resources>
 
     <string name="app_name">SvoyaKompaIIka</string>
-    <string name="hello_world">Hello world!</string>
+
+    <string name="action_newConversation">New conversation</string>
+
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Log out</string>
+    <string name="action_updateContacts">Update contacts...</string>
+
     <string name="PARSE_APP_ID">4J11ugOL7oZ77dIRvOGICs34bnmv00Z9LEM1L2WN</string>
     <string name="PARSE_CLIENT_KEY">SaatbnTD95xZhqyLpYbkaq3Fx7u1zmJ1aoQ8MbRP</string>
-    <string name="title_activity_login_sign_up">Log in</string>
+
+    <!-- Contacts fragment -->
+    <string name="contacts_fragment_title">Friends</string>
+    <string name="app_contacts_db_table_name">AppContacts</string>
+    <string name="app_contacts_orderBy_column_name">name</string>
+    <string name="parse_db_query_column_name">username</string>
 
 
 
-
+    <!-- Conversation fragment -->
+    <string name="conversations_fragment_title">Conversations</string>
 
     <!-- LOGIN SIGNUP ACTIVITY -->
-
+    <string name="title_activity_login_sign_up">Log in</string>
     <string name="Email">Email</string>
     <string name="Password">Password</string>
     <string name="PasswordAgain">Password again</string>
     <string name="ForgotPassword">Forgot your password ?</string>
-
     <string name="BlankFieldError">field should not be empty</string>
     <string name="PasswordsNotEqual">Entred passwords are not equal</string>
-
+    <string name="ErrorMsg">Ops, there is a problem : </string>
     <string name="ProgressMsg">Please wait ...</string>
 
     <string-array name="LoginSignUpSwitch">
         <item>Sign up</item>
         <item>Have an account? Log in</item>
     </string-array>
-
-    <string-array name="LoginSignUpAction">
+    <string-array name="LoginSignUpActions">
         <item>SIGN UP</item>
         <item>LOG IN</item>
         <item>SEND</item>
     </string-array>
 
-    <!-- LOGIN SIGNUP ACTIVITY -->
+    <!-- LOGIN SIGNUP ACTIVITY WITH PHONE NUMBER -->
+    <string name="title_activity_login_sign_up_with_tel_num">LoginSignUpWithTelNumActivity</string>
+    <string name="RegisterPhoneNum">Register your phone :</string>
+    <string name="EnterPhoneNum">Enter your phone</string>
+    <string name="PhoneNumErr">Phone number should contain of 11 digits</string>
+
+
 
 </resources>

@@ -12,10 +12,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
+import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseRole;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 import com.vfdev.android.svoyakompaiika.R;
+
+import java.util.List;
 
 public class LoginSignUpWithTelNumActivity extends Activity {
 
@@ -28,54 +33,6 @@ public class LoginSignUpWithTelNumActivity extends Activity {
     private EditText mPasswordAgainET = null;
 
     private ProgressDialog mProgressDialog = null;
-
-    // ------ Inner classes :
-    private class _SignUpCallback extends SignUpCallback {
-        @Override
-        public void done(ParseException e) {
-            if (e != null) {
-                if (e.getCode() == ParseException.USERNAME_TAKEN) {
-                    // Try to login :
-                    login();
-                } else {
-                    mProgressDialog.dismiss();
-                    Toast.makeText(
-                            getApplicationContext(),
-                            getString(R.string.ErrorMsg) +
-                                    e.getMessage(),
-                            Toast.LENGTH_LONG
-                    ).show();
-                }
-            } else {
-                mProgressDialog.dismiss();
-                finishActivity();
-            }
-        }
-    }
-
-    private class _LogInCallback extends LogInCallback {
-        @Override
-        public void done(ParseUser user, ParseException e) {
-
-            if (e != null) {
-                if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                    // Verification :
-                    verification();
-                } else {
-                    mProgressDialog.dismiss();
-                    Toast.makeText(
-                            getApplicationContext(),
-                            getString(R.string.ErrorMsg) +
-                                    e.getMessage(),
-                            Toast.LENGTH_LONG
-                    ).show();
-                }
-            } else {
-                mProgressDialog.dismiss();
-                finishActivity();
-            }
-        }
-    }
 
     // ------ Activity methods -------
     @Override
@@ -126,7 +83,6 @@ public class LoginSignUpWithTelNumActivity extends Activity {
         Toast.makeText(this,
                 mPhoneNumberET.getText() + " : " + mPasswordET.getText(),
                 Toast.LENGTH_LONG).show();
-
     }
 
     /// Method to finish activity with RESULT_OK
@@ -158,6 +114,12 @@ public class LoginSignUpWithTelNumActivity extends Activity {
         ParseUser user = new ParseUser();
         user.setUsername(userID);
         user.setPassword(password);
+        // All users from 'defaultUsers' role can read this user
+        ParseACL userACL = new ParseACL();
+        userACL.setPublicReadAccess(false);
+        userACL.setPublicWriteAccess(false);
+        userACL.setRoleReadAccess("defaultUsers", true);
+        user.setACL(userACL);
 
         // Call the Parse signup method -> see callback
         user.signUpInBackground(new _SignUpCallback());
@@ -205,7 +167,7 @@ public class LoginSignUpWithTelNumActivity extends Activity {
             return false;
         }
         if (!passwordAgain.equals(password)) {
-            Toast.makeText(getApplicationContext(),
+            Toast.makeText(this,
                     getString(R.string.PasswordsNotEqual),
                     Toast.LENGTH_LONG).show();
             return false;
@@ -220,11 +182,62 @@ public class LoginSignUpWithTelNumActivity extends Activity {
         Log.i(TAG, "onRegisterClicked");
 
         // Set up a progress dialog and try to login/signup
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
         mProgressDialog.setMessage(getString(R.string.ProgressMsg));
         mProgressDialog.show();
         signup();
 
     }
 
+
+    // ------ SignUpCallback & LogInCallback :
+    private class _SignUpCallback extends SignUpCallback {
+        @Override
+        public void done(ParseException e) {
+            if (e != null) {
+                if (e.getCode() == ParseException.USERNAME_TAKEN) {
+                    // Try to login :
+                    login();
+                } else {
+                    mProgressDialog.dismiss();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.ErrorMsg) +
+                                    e.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            } else {
+
+                mProgressDialog.dismiss();
+                finishActivity();
+            }
+        }
+    }
+
+    private class _LogInCallback extends LogInCallback {
+        @Override
+        public void done(ParseUser user, ParseException e) {
+
+            if (e != null) {
+                if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    // Verification :
+                    verification();
+                } else {
+                    mProgressDialog.dismiss();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.ErrorMsg) +
+                                    e.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            } else {
+                mProgressDialog.dismiss();
+                finishActivity();
+            }
+        }
+    }
 
 }

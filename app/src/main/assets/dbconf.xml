@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dbconf db_name="SvoyaKompaiikaAppDB" db_version="2">
+
+    <db_table name="Conversations">
+        <!--pair key="_id" type="integer primary key autoincrement"/-->
+        <pair key="datetime" type="timestamp primary key"/>
+        <pair key="title" type="text non null"/>
+        <pair key="recipients" type="array non null"/>
+        <pair key="senders" type="array non null"/>
+        <pair key="body" type="xml"/>
+    </db_table>
+
+    <db_table name="AppContacts">
+        <!--pair key="_id" type="integer primary key autoincrement"/-->
+        <pair key="_id" type="integer primary key"/>
+        <pair key="phoneNumber" type="text"/>
+        <pair key="name" type="text non null"/>
+        <pair key="icon" type="blob"/>
+    </db_table>
+
+</dbconf>

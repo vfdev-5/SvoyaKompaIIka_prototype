@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/contacts"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:choiceMode="multipleChoice"
+        android:layout_weight="1"/>
+
+    <!--ListView
+        android:id="@+id/contacts"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:choiceMode="multipleChoice"
+        android:listSelector="@android:color/holo_blue_light"
+        android:drawSelectorOnTop="true"
+        android:layout_weight="1" /-->
+
+
+    <!-- Bottom Action Bar  -->
+
+    <!--LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@android:drawable/bottom_bar"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button2"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:background="@android:drawable/ic_menu_add" />
+    </LinearLayout-->
+
+</LinearLayout>
